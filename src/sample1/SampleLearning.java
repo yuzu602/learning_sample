@@ -19,11 +19,14 @@ public class SampleLearning {
 	private static String traceFileName="Traces.txt";      // Prepared traces
 	private static String outputFileName="Result.csv";     // Updated Rules
 
+
 	public static void main(String[] args) {
 		//mu = new GDLearning(GetBaseRules());
 		mu = new SGDLearning(GetBaseRules());
 		//mu = new SimpleLearning(GetBaseRules());
 		SampleFromFile();
+
+		GenerateDomainModel.GenerateDomainText(mu.rules);
 	}
 
 	public static void SampleFromFile(){
@@ -32,6 +35,7 @@ public class SampleLearning {
 			mu.Learning(traces.remove(0));
 		}
 		PrintResult(mu.rules);
+
 	}
 
 	private static List<Rule> GetBaseRules(){
